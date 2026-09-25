@@ -1,13 +1,22 @@
 # Changelog
 
+## 1.1.2
+
+- Cleaner menus, fullscreen editing and rounded nodes.
+- Edit settings inside nodes and connect multiple Options to Dialogue.
+- Clearer quest fields, node hints and connection checks.
+- Separate Travel & Kits menu, with /travel and /kit shortcuts.
+- Improved NPC conversations and zone events for players.
+- Fixed menu input; move freely while placing objects. NPC size now supports 10×.
+
+## 0.1.2
+
+- Fixed stuck NPCs after deletion and expanded inventory viewing.
+
 ## 0.1.1
 
-- Creature, hair, item and other selection windows now appear in front of the main menu.
-- Drag selection windows by their title bars. Their position is remembered while playing.
-- The menu underneath waits until you close a selection window.
-- Clear held UI input when switching away from the game.
-- Shorter mod description and clearer installation notes.
+- Fixed selection windows, dragging and input after switching away from the game.
 
 ## 0.1.0
 
-- First beta with WeaverEditor, NPCs, quests, event zones, spawners, reward chests and admin tools.
+- First beta: WeaverEditor, NPCs, quests, events, spawners, chests and admin tools.

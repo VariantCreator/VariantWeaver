@@ -1,43 +1,51 @@
-# Getting started with Weaver
+# Quick guide
 
-Press **F8** after joining a world. Use the menu to create your NPCs, spawners, chests and event zones.
+**F8** opens Weaver. Players use **/travel** and **/kit** for destinations and rewards.
 
-## WeaverEditor
+## Editor controls
 
-- Click an output pin, then an input pin to connect two nodes. Right-click cancels a connection in progress.
-- Drag nodes to move them. Middle-drag pans the graph; the mouse wheel zooms.
-- Select a node to change its settings. Conditions have True and False paths; dialogue can have several choices.
-- Save a draft while working. Publish when you're ready to use it in the world.
-- Link the published graph to an NPC, zone or schedule.
+- Click an output, then an input to connect. Click a wire to remove it.
+- Drag titles to move nodes. Middle-drag to pan; scroll to zoom.
+- **Fullscreen** expands the menu; **Restore** returns to a window. F8 hides it and keeps your edits.
+- Edit settings inside nodes or in the side panel. Save drafts while working; **Publish & link** makes a graph active on its NPC or zone.
 
-## A quest from one NPC to another
+## Nodes
 
-1. Create and place two NPCs. Give them names and choose their appearance.
-2. Open the **NPC quest handoff** template in WeaverEditor.
-3. Select the destination NPC in **HandoffQuest**. Connect **At next NPC** to the next part of your quest.
-4. Publish the graph, then choose it under the first NPC's **On interaction** field and save the NPC.
+| Node | Use |
+| --- | --- |
+| Origin | Start here. |
+| Dialogue | NPC speech. |
+| Option | A player's reply and what follows it. |
+| Condition | Choose a check, then connect True and False. |
+| Action | Give rewards, change progress or run an action. |
+| Event | Control NPCs, zones, spawners and chests. |
+| Wait | Pause for seconds, including fractions. |
+| Randomiser | Choose one connected path. |
+| Bounce / Land | Jump to another part of the graph. |
+| Comment | Leave a note. |
 
-The quest waits until that player talks to the destination NPC. Renaming the NPC later won't break the link. Players can check their waiting quests in **Quests**.
+## Conversations and quests
 
-## A boss fight with a reward chest
+Place an NPC and choose **Create dialogue**. Write its speech in Dialogue. Connect the same output to an Option for each reply, then connect each Option to its next action. Dialogue and Randomiser support up to eight paths.
 
-1. Create a loot kit in **Community**.
-2. Create a spawner, choose the boss and its stats, and place the egg marker. Set **Maximum alive** to **1** for a single boss. Choose a loot kit if the boss should drop specific items.
-3. Create and name an event chest. Choose its reward kit, lock access and enable damage protection. Add a required key if you want one.
-4. Connect **TriggerSpawner → WaitSpawnerClear → SetChestLocked** in your graph. Turn the chest's lock off in the last node.
-5. Use the False paths for cooldown, busy-encounter or timeout messages. Publish and link the graph to your NPC or event zone.
+**Text speed** controls speech reveal; 0 shows it immediately. **Append** keeps earlier speech. Players use 1–8 to reply, Space to reveal text and Esc to leave. Older replies keep working when moved into Option nodes.
 
-To make the chest destructible after the fight, add **ProtectChest** and turn protection off. Keep protection on if the chest should stay for other players.
+Use the same **Quest key** in Give Quest, Has Quest, Complete Quest and Has Completed Quest. **Quest name** and **Instructions** appear in the journal. True / False checks a separate flag; it does not check quest progress.
 
-For personal quest rewards, set a Player-scope variable when the quest finishes and use that variable as the chest's quest requirement. A chest's lock and damage protection are shared; its quest requirement and reward claims can be per player.
+For another NPC to continue a quest, use **Handoff Quest**, select that NPC and connect **At next NPC** to the next step.
 
-## Useful details
+## Events and rewards
 
-- Click a selection field to search items, creatures or appearances. Drag the popup by its title bar.
-- Place objects by aiming at the ground and clicking. **Q/E** rotates; **Escape** cancels.
-- Choose **Add** loot to keep normal drops, or **Replace** to use only your kit. Changes to a spawner affect future spawns.
-- Set a cooldown or check a quest variable near the start of a graph to prevent repeat rewards.
-- NPCs are stationary and invulnerable. Use spawners for combat creatures.
-- The catalog refreshes as mods register content. You can also rescan from **Mods**. Everyone needs the content mods used by your quests.
-- Change the menu key in `BepInEx/config/com.variantmods.weaver.cfg` after the first launch.
-- Keep a backup of your world's Weaver data in `BepInEx/config/VariantWeaver` when moving servers.
+Place a zone, choose an Enter or Exit event, then publish and link its graph. Check **Enabled**, **Ignore admins** and the cooldown if it does not fire.
+
+For a boss encounter, create a spawner and reward chest. Connect **Trigger NPC Spawner → Wait for Spawner Clear → Lock Chest**, with Locked turned off in the last node. Use False paths for busy or timeout messages. **Protect Chest** controls damage protection.
+
+Add cooldowns to repeatable rewards. Chest locks are shared; use a Player-scope variable for personal chest requirements.
+
+## Handy details
+
+- During placement, keep moving and looking. Click to place, Q/E to rotate, Esc to cancel.
+- Use **Delete NPC**, then confirm. Disabling an NPC keeps its settings.
+- CharVar is per player, LocVar is per NPC or zone, and GlobVar is shared.
+- Keep both mod DLLs together. Everyone needs the content mods used in your graphs.
+- Back up `BepInEx/config/VariantWeaver` when moving servers.
