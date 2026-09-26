@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3
+
+- Fixed buttons and nodes losing their backgrounds during play.
+
 ## 1.1.2
 
 - Cleaner menus, fullscreen editing and rounded nodes.
