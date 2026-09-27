@@ -2,6 +2,8 @@
 
 **F8** opens Weaver. **Fullscreen / Restore** changes the window size. Players use **/kit**, **/travel**, and the Quest journal.
 
+Weaver travel is blocked during combat and for 20 seconds afterward. This includes teleport actions and admin teleports. Normal portals are unchanged. Blocked trips do not use the warp cooldown; teleport actions follow False.
+
 ## WeaverEditor
 
 Choose a colored node, then set its type inside the card. Connect an output to an input. Right-click removes a wire; Undo restores it. Drag titles to move nodes, middle-drag to pan, and scroll to zoom.

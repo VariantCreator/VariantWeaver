@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.7
+
+- Weaver travel is blocked during combat and for 20 seconds afterward.
+- Includes NPC, graph and admin teleports. Normal portals are unchanged.
+- Blocked trips keep their cooldown ready. Teleport actions follow False.
+
 ## 1.1.6
 
 - Fixed NPC conversations and quest actions failing for some players on servers.
