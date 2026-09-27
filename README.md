@@ -4,7 +4,7 @@ Create quests and events in Valheim with WeaverEditor, custom NPCs, dialogue, bo
 
 **Beta, provided as-is, with frequent updates to come.**
 
-[Download 1.1.3](https://github.com/VariantCreator/VariantWeaver/releases/download/v1.1.3/VariantMods-VariantWeaver-1.1.3.zip) · [Quick guide](GUIDE.md) · [Changelog](CHANGELOG.md)
+[Download 1.1.4](https://github.com/VariantCreator/VariantWeaver/releases/download/v1.1.4/VariantMods-VariantWeaver-1.1.4.zip) · [Quick guide](GUIDE.md) · [Changelog](CHANGELOG.md)
 
 ## Install
 
