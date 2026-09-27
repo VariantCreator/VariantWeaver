@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.5
+
+- Fixed NPC and zone links being overwritten by open editors.
+- Saved graphs show their linked NPC or zone when reopened.
+- Arrange and moving nodes now save their positions.
+- Added Inspect identities, graph previews, world undo, quest tracking and NPC routines.
+- Added encounter tools and server performance limits.
+
 ## 1.1.4
 
 - Colored node shortcuts, a searchable graph list, inline editing and True/False outputs.
