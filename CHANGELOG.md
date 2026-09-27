@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.6
+
+- Fixed NPC conversations and quest actions failing for some players on servers.
+- Moving nodes no longer causes a publishing conflict.
+- Save conflicts refresh the server view while keeping your edits.
+
 ## 1.1.5
 
 - Fixed NPC and zone links being overwritten by open editors.
