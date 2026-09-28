@@ -4,7 +4,7 @@ Build quests and events in Valheim with WeaverEditor, NPCs, dialogue, spawners a
 
 **Beta, provided as-is, with frequent updates to come.**
 
-[Download 1.1.7](https://github.com/VariantCreator/VariantWeaver/releases/download/v1.1.7/VariantMods-VariantWeaver-1.1.7.zip)
+[Download 1.1.8](https://github.com/VariantCreator/VariantWeaver/releases/download/v1.1.8/VariantMods-VariantWeaver-1.1.8.zip) · [Guide](GUIDE.md) · [Changelog](CHANGELOG.md)
 
 Install BepInExPack Valheim, then import the ZIP into your mod manager. Install the same build on the server or host and every player's client. Keep both DLLs together.
 
@@ -14,4 +14,4 @@ Updating? Keep the server's `BepInEx/config/VariantWeaver` folder. It holds your
 
 Weaver discovers items and creatures from installed mods. Everyone needs the content mods your events use.
 
-[Quick guide](GUIDE.md) · [Changelog](CHANGELOG.md) · [Downloads](https://github.com/VariantCreator/VariantWeaver/releases)
+Inspired by [Pippi — User & Server Management](https://steamcommunity.com/sharedfiles/filedetails/?id=880454836) for Conan Exiles, created by **Joshtech (CoOkIeMoNsTeR)**. Thank you for the inspiration behind Weaver's NPC tools and visual quest editing.

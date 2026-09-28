@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.8
+
+- Raised the world content limit to 8 MB, adjustable up to 16 MB on the server.
+- Compressed larger transfers to fix the repeated 1 MB warning when saving, publishing or refreshing.
+- Expanded the guide with setup steps, examples and Pippi creator credit.
+
+Update the server and every client together.
+
 ## 1.1.7
 
 - Weaver travel is blocked during combat and for 20 seconds afterward.
