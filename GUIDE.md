@@ -4,7 +4,7 @@ Build conversations, quests and events in Valheim with WeaverEditor.
 
 **Beta, provided as-is, with frequent updates to come.**
 
-[Getting started](#getting-started) · [First NPC](#your-first-npc-conversation) · [Nodes](#nodes-and-connections) · [Quests](#quests-and-timers) · [Events](#spawners-zones-and-chests) · [World tools](#world-tools) · [Imports](#sharing-graphs) · [Server settings](#server-settings-and-backups) · [Troubleshooting](#troubleshooting)
+[Getting started](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#getting-started) · [First NPC](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#your-first-npc-conversation) · [Nodes](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#nodes-and-connections) · [Quests](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#quests-and-timers) · [Events](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#spawners-zones-and-chests) · [World tools](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#world-tools) · [Imports](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#sharing-graphs) · [Server settings](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#server-settings-and-backups) · [Troubleshooting](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#troubleshooting)
 
 ## Getting started
 
