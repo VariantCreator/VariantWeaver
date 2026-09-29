@@ -4,7 +4,7 @@ Build conversations, quests and events in Valheim with WeaverEditor.
 
 **Beta, provided as-is, with frequent updates to come.**
 
-[Getting started](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#getting-started) · [First NPC](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#your-first-npc-conversation) · [Nodes](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#nodes-and-connections) · [Quests](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#quests-and-timers) · [Events](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#spawners-zones-and-chests) · [World tools](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#world-tools) · [Imports](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#sharing-graphs) · [Server settings](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#server-settings-and-backups) · [Troubleshooting](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#troubleshooting)
+[Getting started](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#getting-started) · [Menus](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#menu-and-editor) · [Shared settings](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#shared-settings) · [First NPC](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#your-first-npc-conversation) · [Nodes](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#nodes-and-connections) · [Quests](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#quests-and-timers) · [Events](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#spawners-zones-and-chests) · [World tools](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#world-tools) · [Imports](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#sharing-graphs) · [Server settings](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#server-settings-and-backups) · [Troubleshooting](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#troubleshooting)
 
 ## Getting started
 
@@ -23,6 +23,44 @@ For manual installation, copy the ZIP's `plugins/VariantWeaver` folder into `Bep
 | **Esc** | Close a player window, or leave placement, inspection or a zone preview |
 
 Create travel points under **Travel** and kits under **Community**. Mark them public if players should see them in their menu. They can still be used as graph actions without appearing there.
+
+## Menu and editor
+
+NPCs, zones, chests and spawners have a searchable browser with enabled and linked status. Select an object to open its settings; expand **Browse** to choose another. Your unsaved object edits stay available while switching within the session.
+
+**Community → Kits** has a compact item list. Search, change quantities directly, or select an item to change it. **Merge duplicate items** combines matching entries. Save stays at the bottom of the panel. Kits allow 60 rows and 1,000 items per row by default; the server owner can change those limits.
+
+WeaverEditor keeps the current graph name and save state visible. Use the arrows to go back and forward, or **Graphs** to search All, Recent, Linked or Draft graphs. Names such as `Tavern / Greeter` group related graphs.
+
+- All nodes use the same size by default. Longer settings scroll inside the node.
+- Shift-click or drag empty space to select nodes. Drag a title to move the selection.
+- **Select branch** selects the connected path. Copy/paste keeps connections between copied nodes; reconnect any outside links.
+- Align a selection into a row or column. Use the minimap to move around large graphs.
+- Click a validation result to find its node. Missing connections appear red.
+- Collapse the inspector for more space. Edit node settings directly inside the cards.
+- **Connections / Used by** opens related graphs and world objects.
+
+Local draft recovery saves while you edit and does not publish anything. **Recovered drafts** also finds new graphs that were never saved to the server. Compare with the server copy before saving recovered work. Publishing and linking stay manual.
+
+**Settings** controls text size, accent colour, visible rows, node dimensions, minimap, previews and recovery. Server draft autosave is optional and off by default. The server can disable it.
+
+Players can expand a kit to see its items and icons. Travel and kit buttons show their own remaining cooldowns. NPC appearance previews let admins rotate the model before placing it.
+
+## Shared settings
+
+The config is created at `BepInEx/config/com.variantmods.weaver.cfg` after Weaver starts.
+
+| Section | Settings |
+| --- | --- |
+| Menu appearance | Text size, accent, collapsed sections, browser rows, previews and details |
+| Editor preferences | Equal node sizes, dimensions, selection tools, minimap, inspector, local recovery and optional server autosave |
+| Server rules | Public travel/kits, NPC conversations, previews, inspection, admin powers, debug/devcommands, draft autosave and history cleanup |
+| Storage | World content limit, saved revision limit and revisions retained per graph after cleanup |
+| Server performance | Active creatures and spawns per second |
+
+Change **Server rules**, **Storage** and **Server performance** on the server or host, then restart it. Clients cannot override server rules. Weaver's debug/devcommands setting controls its own buttons; other mods keep their own controls. Normal portals are unchanged.
+
+**History → World storage** shows the space used by published graphs, drafts, revisions and player state. Only the server owner can clean earlier revisions. Cleanup first saves the full world file under `BepInEx/config/VariantWeaver/backups`; current graphs, drafts and links are kept.
 
 ## Your first NPC conversation
 
@@ -132,7 +170,7 @@ Keys can be ordinary items or one of eight Weaver key types. Issue a personal ke
 | **Placement handles** | Hold Left Alt to drag move/rotate handles. T returns to aiming. Click saves; Shift-click keeps placing a copy. Esc returns to Weaver. |
 | **Inspect** | Toggle it to inspect with Weaver closed. Shows player identities and known building creators. Older creators become known when they join; other platforms show their platform ID. Esc returns to Weaver. |
 | **History** | Undo recent NPC, chest, zone and spawner edits, including deletions. Undo preserves player progress and refuses to overwrite newer edits. |
-| **NPC routines** | Add poses, nearby greetings and patrol points. Patrols follow straight paths; keep them clear of walls. NPCs pause while talking and when nobody is nearby. |
+| **NPC routines** | Add poses, nearby greetings and patrol points. Set Pause to 0 for continuous walking or use seconds for a stop at each point. Patrols follow straight paths; keep them clear of walls. NPCs pause while talking and when nobody is nearby. |
 
 Weaver travel is blocked during combat and for **20 seconds afterward**, including NPC, graph and admin teleports. Blocked trips do not spend the warp cooldown; teleport actions follow False. Normal Valheim portals work as usual.
 

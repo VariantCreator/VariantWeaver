@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.9
+
+- Cleaner menus with rounded frames, clearer selection and collapsible settings.
+- Searchable world objects and compact kit editing with icons and quantities.
+- Equal-sized nodes, graph navigation, group selection, minimap and clickable errors.
+- Visible save status and local draft recovery. Optional server draft autosave.
+- NPC appearance previews, smoother patrols and clearer player kits, travel and cooldowns.
+- Configurable server rules, kit limits and storage cleanup with backups.
+
+Update the server and every client together.
+
+Beta, provided as-is, with frequent updates to come.
+
 ## 1.1.8
 
 - Raised the world content limit to 8 MB, adjustable up to 16 MB on the server.
