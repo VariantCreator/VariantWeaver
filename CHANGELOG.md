@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.2.1
+
+- Separate server settings can block Weaver travel while encumbered or carrying non-teleportable items. Both default off.
+- Covers warps, /return, player teleports, bring requests and graph travel, including admins.
+- Rechecks the travelling player's inventory after approval and before moving.
+- Shows blocked-travel reasons and preserves return points when blocked.
+- Keeps normal portals, themes, trader menus and quest HUD behavior unchanged.
+
+Update the server or host and every client together.
+
+Beta, provided as-is, with frequent updates to come.
+
+## 1.2.0
+
+- Valheim-themed player and admin menus, five personal themes and updated portal, supply-chest and quest-scroll icons.
+- Redesigned travel, kit and quest pages with clearer cards and item previews.
+- Themed quest tracker with Esc-dragging, saved position, scale, width, opacity and display options.
+- Item-icon traders with quantities, prices, search, filters and exchange confirmation.
+- /warp replaces /travel. /return remembers only the last successful Weaver departure point.
+- /tp, Teleport to player and Bring player here require the existing teleport permission and the other player's approval.
+- Accept / Deny popup, Esc to deny, a 30-second expiry and repeat-request limits.
+
+Update the server or host and every client together. Keep both DLLs and preserve existing configuration and world data.
+
 ## 1.1.9
 
 - Cleaner menus with rounded frames, clearer selection and collapsible settings.

@@ -4,25 +4,146 @@ Build conversations, quests and events in Valheim with WeaverEditor.
 
 **Beta, provided as-is, with frequent updates to come.**
 
-[Getting started](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#getting-started) · [Menus](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#menu-and-editor) · [Shared settings](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#shared-settings) · [First NPC](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#your-first-npc-conversation) · [Nodes](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#nodes-and-connections) · [Quests](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#quests-and-timers) · [Events](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#spawners-zones-and-chests) · [World tools](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#world-tools) · [Imports](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#sharing-graphs) · [Server settings](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#server-settings-and-backups) · [Troubleshooting](https://github.com/VariantCreator/VariantWeaver/blob/main/GUIDE.md#troubleshooting)
+[Getting started](#getting-started) · [Menus](#menu-and-editor) · [Shared settings](#shared-settings) · [First NPC](#your-first-npc-conversation) · [Nodes](#nodes-and-connections) · [Quests](#quests-and-timers) · [Events](#spawners-zones-and-chests) · [World tools](#world-tools) · [Imports](#sharing-graphs) · [Server settings](#server-settings-and-backups) · [Troubleshooting](#troubleshooting)
 
 ## Getting started
 
 1. Install BepInExPack Valheim, then import the Weaver ZIP into your mod manager.
 2. Install the **same Weaver build on the server or host and every client**. Keep `VariantWeaver.dll` and `VariantWeaver.Core.dll` together.
-3. Join a world and press **F8**. Server admins and players with assigned permissions can edit content. Other players get Travel & Kits and their quest journal.
+3. Join a world and press **F8**. Server admins and players with assigned permissions can edit content. Other players get Travel, Kits, Quests and Appearance.
 
 For manual installation, copy the ZIP's `plugins/VariantWeaver` folder into `BepInEx/plugins`. Everyone also needs the content mods used by your graphs. Weaver reads the items and creatures registered by installed mods; use **Mods → Rescan** if an entry is missing.
 
 | Control | What it does |
 | --- | --- |
 | **F8** | Open Weaver or the player menu |
-| **/travel** | Open public travel points |
+| **/warp** | Open public warp destinations |
 | **/kit** | Open public kits |
+| **/return** | Return to the departure point of your last successful Weaver teleport |
+| **/tp <player name>** | Ask another player to allow your teleport; requires teleport permission |
 | **Fullscreen / Restore** | Expand the editor or return to its window |
-| **Esc** | Close a player window, or leave placement, inspection or a zone preview |
+| **Esc** | Close Weaver; during ordinary gameplay, open the pause menu and unlock quest-HUD dragging |
 
 Create travel points under **Travel** and kits under **Community**. Mark them public if players should see them in their menu. They can still be used as graph actions without appearing there.
+
+## Themes, player journal and movable quest tracker
+
+### Choosing a theme
+
+Regular players open **F8 → Appearance**. Admins open **F8 → Settings → Appearance**. The themes are **Valheim**, **Black Forest**, **Frost**, **Ashlands** and **High Contrast**. Accent choices are Theme, Gold, Teal, Blue, Copper, Silver and Ember. Choose **Theme** to use each preset's own accent. Previously saved accent settings are retained.
+
+Choose Valheim lettering or readable lettering, adjust text size, and enable or disable the subtle carved texture. High Contrast does not add grain. Fonts and item icons come from your game or system; no font installation is needed.
+
+These settings affect Weaver's player journal, all admin tabs, WeaverEditor, inventory and selection windows, dialogue, trader menus and quest tracker. Node-category and warning colours remain distinguishable. They do not recolour another mod's menus or the game's own pause/settings screens.
+
+Appearance settings are local to each installation, not shared server rules. Your choices do not change other players' interfaces.
+
+### Travel, kits and quests
+
+The player menu has **Travel**, **Kits**, **Quests** and **Appearance** pages. Travel cards show readiness, cooldown and optional distance/coordinates. The **Return to departure** button uses the same Weaver-only return as **/return**.
+
+Kit cards show availability and item previews. Expand a card to see quantities and the complete contents. Search kits and travel points by name. Claiming kits and using travel still use the existing server permissions, restrictions and cooldowns.
+
+The quest journal has Active, Finished and All filters. Quest cards show instructions, item counts, destination distance and timers when those values are supplied by the quest. Use the tracked toggle to hide or restore a quest in the HUD. Full instructions remain available in the journal when a tracker row is too short. Abandoning or dismissing a quest still requires confirmation.
+
+### Moving the tracker with Esc
+
+1. Close Weaver and any NPC dialogue, then press **Esc** during gameplay.
+2. The tracker shows **MOVE MODE**. Hold the left mouse button on the tracker and drag it to your chosen position.
+3. Release the mouse to save. Press **Esc** again to close the pause menu and lock the tracker.
+
+A sample tracker appears in move mode when there are no active tracked quests, so you can arrange it before accepting a quest. When you finish a quest, a short themed completion/update notice may remain visible even when the active list is empty.
+
+While playing normally, the tracker does not intercept mouse clicks or unlock your cursor. Dragging is disabled while Weaver, dialogue, placement, inventory inspection or a native settings/player submenu is open. Closing the pause menu, losing focus or leaving the world ends the drag.
+
+### Tracker settings and reset
+
+Regular players use **F8 → Appearance → Quest tracker**. Admins use **F8 → Settings → Quest tracker**. Available controls:
+
+- Show/hide the tracker, enable Esc dragging and enable quest destination map pins.
+- Scale from **0.65× to 1.60×** and width from **280 to 520 pixels** before scaling.
+- Background opacity from **35% to 100%** and compact quest rows.
+- Maximum **1–6** tracked quests. Extra tracked quests remain in the journal.
+- **Move tracker** opens the Esc menu for placement. **Reset position** restores the default placement.
+
+The position is saved as a proportion of available screen space. Resolution, scale and width changes keep the complete panel on screen. Large trackers are automatically reduced to fit smaller screens. The default maximum is three quests.
+
+Preferences are stored in the local `BepInEx/config/com.variantmods.weaver.cfg`, in **Menu appearance** and **Quest tracker**. Use the in-game controls rather than editing the file while the game is open. Reset position does not delete quests or server data.
+
+### Version 1.2.1 upgrade
+
+Version **1.2.1** adds optional travel restrictions while keeping the previous teleport-approval, menu and quest features. Update both DLLs together, including when upgrading from 1.2.0 or an earlier 1.1.1 revision.
+
+Back up your config and world content. Stop the server/game before replacing the existing `VariantWeaver.dll` and `VariantWeaver.Core.dll` with the matching pair from this ZIP. Remove duplicate copies elsewhere in the profile. Update server/host and all clients together. Do not delete `BepInEx/config/VariantWeaver`.
+
+## Optional travel restrictions
+
+Edit the server or host's `BepInEx/config/com.variantmods.weaver.cfg`, under the existing `[Server rules]` section:
+
+```ini
+[Server rules]
+Block travel while encumbered = true
+Block travel with non-teleportable items = true
+```
+
+Both settings default to **false**, keeping existing travel behavior until enabled. Each can be turned on independently. Run the new build once to add the settings, stop the server or host, edit the file and restart it.
+
+The rules cover **warps, /return, teleport to player, Bring player here and graph/NPC teleports**, including admins. The player actually being moved is checked, not a stationary request sender or destination player. Local client config cannot turn off the host's rules.
+
+Weight is checked against the current carry limit. The item setting checks the no-teleport flag on carried items, including modded items, and special never-teleportable quest cargo. It is not a fixed ore/ingot list. A mod that changes an item's flag to teleportable changes what this setting sees. This separate Weaver rule still applies when the world allows ore through normal portals.
+
+The travelling player's inventory is checked again immediately before travel, including after another player accepts a pending request. Blocked travel explains why and keeps the previous return point. A rejected warp refunds its warp cooldown; the short anti-spam/retry timers still apply. Store restricted items or reduce weight, then try again. Normal portals and other mods' teleport commands are unchanged.
+
+Install **1.2.1 on the server/host and every client**. Older client builds do not implement these checks. Custom storage supplied by another mod must expose its contents through the player's inventory to be inspected.
+
+The admin **Settings → Server rules** panel shows whether each restriction is enabled. Change the settings in the host's config, not in personal Appearance options.
+
+## Trader menus and player travel
+
+### Item-icon traders
+
+When a dialogue offers a direct Trade action or a straightforward exchange confirmation, Weaver shows an item-icon trader menu. It displays the goods, bundle quantities, price, payment availability and the full exchange. Choose **Buy**, **Sell**, **Barter** or **All**, and use the search field to narrow the list.
+
+Click an offer to select it. **Review exchange** opens an existing confirmation; **Confirm exchange** performs the selected direct exchange through the original graph. One click exchanges one authored bundle. The server still controls the graph and prices; the new menu does not create a separate shop inventory.
+
+Existing straightforward trader graphs need no new import. Conditional offers, multiple-output options, hidden rewards and branching exchanges remain in their authored dialogue paths. An unavailable item uses a placeholder icon and cannot be confirmed through the icon panel. Item names and sprites are read from the installed game/mod items.
+
+### Return from Weaver travel
+
+Use **/return** to go back to where your last successful Weaver teleport started. This covers Weaver travel points, Weaver graph teleports and Weaver player teleports. It does not use general teleport history.
+
+Example: Weaver takes you from your base to a town, then you use a normal portal. **/return** goes back to the base; the normal portal does not replace the Weaver departure point.
+
+A newer successful Weaver teleport replaces the saved point. Failed travel keeps the old point. A successful return consumes it instead of creating a back-and-forth toggle. Return points are session-only and clear when you leave the world or disconnect. A short retry cooldown applies, along with existing Weaver combat and travel restrictions.
+
+### Teleport to an online player
+
+Open **F8 → Players**, select an online player, and choose **Teleport to player**. The other player gets a themed **Accept / Deny** popup with your name. **Bring player here** instead asks the selected player to let Weaver move them to you. Neither action moves anyone until they accept.
+
+From chat, use:
+
+```text
+/tp PlayerName
+/tp "Player Name"
+```
+
+Names are case-insensitive. A unique partial name works, but ambiguous matches are rejected. When names are duplicated, choose the player through the menu. The server resolves live positions when it receives the action, rather than trusting coordinates from the player's menu.
+
+Player teleporting and bringing still require admin access or the **players.teleport** permission. This does not grant unrestricted player teleports to everyone. Admins must also get the recipient's approval.
+
+**Accept** permits that one request. **Deny** or **Esc** dismisses it without moving anyone. Unanswered requests expire after **30 seconds**. Denial restores control immediately; accepting waits for the server to validate the request. The popup follows the recipient's selected theme and uses the portal icon. An initial click guard prevents an existing click from accepting a newly opened request.
+
+Only one request can involve a player at a time. A sender must wait at least **10 seconds** between requests, and the recipient gets a brief **5-second** quiet period after one closes. Requests are cancelled when either player disconnects or changes character. They are not saved across worlds or server restarts.
+
+On approval, the server checks the original player sessions, the sender's current permission and the travelling player's combat restriction again. The server includes its current travel rules with the approved effect; the travelling client checks its live inventory and weight before moving. It uses the destination player's **current position**, not where they stood when the request was sent. A stale, expired or replayed approval cannot cause another teleport.
+
+Only a successful approved trip creates or replaces the travelling player's Weaver return point. Denied and expired requests do not alter `/return`. This consent prompt applies to `/tp`, **Teleport to player** and **Bring player here**. Normal portals, named Weaver warp destinations and quest-graph travel do not show this consent prompt. Enabled travel restrictions still apply to all Weaver teleports.
+
+Install **1.2.1** on the **server/host and every client**. Earlier builds without teleport approval do not implement this handshake: an old server can still have immediate-teleport behavior, while an old recipient client cannot display the request and it will expire.
+
+### Updating
+
+Install 1.2.1 on the server or host and every client. Keep **VariantWeaver.dll** and **VariantWeaver.Core.dll** together; remove old duplicate copies rather than leaving two versions installed. Back up and keep `BepInEx/config/VariantWeaver` and your existing Weaver config. This package does not replace saved quests, NPCs or world configuration.
 
 ## Menu and editor
 
@@ -54,7 +175,7 @@ The config is created at `BepInEx/config/com.variantmods.weaver.cfg` after Weave
 | --- | --- |
 | Menu appearance | Text size, accent, collapsed sections, browser rows, previews and details |
 | Editor preferences | Equal node sizes, dimensions, selection tools, minimap, inspector, local recovery and optional server autosave |
-| Server rules | Public travel/kits, NPC conversations, previews, inspection, admin powers, debug/devcommands, draft autosave and history cleanup |
+| Server rules | Encumbrance and non-teleportable-item travel restrictions, public travel/kits, NPC conversations, previews, inspection, admin powers, debug/devcommands, draft autosave and history cleanup |
 | Storage | World content limit, saved revision limit and revisions retained per graph after cleanup |
 | Server performance | Active creatures and spawns per second |
 
@@ -134,7 +255,7 @@ Timers continue while the player is offline. **Has Quest Timer** checks for a ru
 
 Use **Handoff Quest** to send a player to another saved NPC. Its continuation runs when that player talks to the destination NPC. Keep quest keys consistent across both conversations.
 
-An optional item target and map destination help players follow a quest. Players can track up to three active quests. The displayed item count comes from their inventory; your graph still needs to check the requirement and complete the quest.
+An optional item target and map destination help players follow a quest. The tracker defaults to three quests, with a configurable maximum of one to six. The displayed item count comes from their inventory; your graph still needs to check the requirement and complete the quest.
 
 ## Spawners, zones and chests
 
@@ -215,3 +336,7 @@ If an older build already cleared a link, select its NPC or zone and use **Publi
 ## Inspiration and credit
 
 Variant Weaver is inspired by [Pippi — User & Server Management](https://steamcommunity.com/sharedfiles/filedetails/?id=880454836) for Conan Exiles, created by **Joshtech (CoOkIeMoNsTeR)**. Credit to Joshtech for the NPC tools and visual quest editing that inspired this project. Weaver is an independent Valheim mod, with its visual editor named **WeaverEditor**.
+
+### Journal icons
+
+Warps show a glowing portal, kits a supply chest, and quest headings a sealed scroll. The tracker uses the same scroll. Item objectives keep their native item icons. These icons are included in the mod and do not require an extra download.
