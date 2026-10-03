@@ -10,11 +10,12 @@ For a manual install, copy the ZIP's `plugins/VariantWeaver` folder into `BepInE
 
 ## Get started
 
-- Press **F8** in a world to open WeaverEditor. Admins get the editing tools; other players get Travel, Kits, Quests and Appearance.
+- Press **F8** in a world to open WeaverEditor. Admins get the editing tools; players get Travel, Kits, Quests, Appearance and My Vendors.
 - For a conversation, place and save an NPC. Open **WeaverEditor**, create a graph, choose that NPC, then **Publish & link**. Close the menu and press **E** to talk.
 - Create public destinations under **Travel** and item kits under **Community → Kits**. Players can open them with **/warp** and **/kit**.
+- To give players their own shops, add **Vendor Deed** to a kit and choose an NPC appearance. Players use the deed, deposit items, and set a payment item and amount, such as armour for 250 Stone. **My Vendors** holds their stock and earnings.
 - Use **Settings → Appearance** to change the theme and text size. Players have their own **Appearance** page.
 
-[Full guide](https://github.com/VariantCreator/WeaverEditor/blob/main/GUIDE.md) · [Changelog](https://github.com/VariantCreator/WeaverEditor/blob/main/CHANGELOG.md) · [Download 1.2.2](https://github.com/VariantCreator/WeaverEditor/releases/tag/v1.2.2)
+[Full guide](https://github.com/VariantCreator/WeaverEditor/blob/main/GUIDE.md) · [Changelog](https://github.com/VariantCreator/WeaverEditor/blob/main/CHANGELOG.md) · [Downloads](https://github.com/VariantCreator/WeaverEditor/releases)
 
 Inspired by [Pippi — User & Server Management](https://steamcommunity.com/sharedfiles/filedetails/?id=880454836) for Conan Exiles, created by **Joshtech (CoOkIeMoNsTeR)**.

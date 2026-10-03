@@ -1,3 +1,11 @@
+# 1.2.3
+
+- Added player-owned vendors. Give players a Vendor Deed through a kit.
+- Sell stocked items for Coins, Stone or another item. Owners collect payments in My Vendors.
+- Owners can change their vendor's appearance or pack it away. Stock and earnings stay saved.
+
+Update the server or host and every client together.
+
 # 1.2.2
 
 - Renamed the mod to WeaverEditor. Existing saves and settings carry over.

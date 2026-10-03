@@ -8,7 +8,7 @@ Build conversations, quests and events in Valheim with WeaverEditor.
 
 1. Install BepInExPack Valheim, then import the WeaverEditor ZIP into your mod manager.
 2. Install the **same WeaverEditor build on the server or host and every client**. Keep `VariantWeaver.dll` and `VariantWeaver.Core.dll` together.
-3. Join a world and press **F8**. Server admins and players with assigned permissions can edit content. Other players get Travel, Kits, Quests and Appearance.
+3. Join a world and press **F8**. Server admins and players with assigned permissions can edit content. Other players get Travel, Kits, Quests, Appearance and My Vendors.
 
 For manual installation, copy the ZIP's `plugins/VariantWeaver` folder into `BepInEx/plugins`. Everyone also needs the content mods used by your graphs. WeaverEditor reads the items and creatures registered by installed mods; use **Mods → Rescan** if an entry is missing.
 
@@ -24,6 +24,38 @@ For manual installation, copy the ZIP's `plugins/VariantWeaver` folder into `Bep
 
 Create travel points under **Travel** and kits under **Community**. Mark them public if players should see them in their menu. They can still be used as graph actions without appearing there.
 
+## Player-owned vendors
+
+### Add a vendor to a kit
+
+1. Create and save an NPC with the appearance you want players to receive.
+2. Open **Community → Kits**, choose a kit, and add **Vendor Deed** (`VW_VendorDeed`).
+3. Select that kit entry and choose its **NPC appearance**, then save the kit. Leave the appearance empty for a basic vendor.
+
+The deed copies the NPC's appearance when placed. Its conversation, graph and admin actions do not carry over. Give the kit a claim limit or cooldown if you want to limit who receives deeds.
+
+### Open your shop
+
+Use the deed from your inventory, choose a nearby spot, and left-click to place it. **Q/E** turns it; **Esc** cancels. The deed is consumed only after placement succeeds. Press **E** at the vendor to open its shop.
+
+Under **Stock**, choose an unequipped inventory item, enter the lot size, and choose the payment item and price. For example, deposit one chest piece and ask for **250 Stone**. Confirming removes those items from your inventory and lists that one lot. Buyers review the goods and payment before purchasing. Quality, condition and saved item details stay with the item.
+
+Payments use the buyer's carried inventory. Equipped, protected and quest items are excluded. Vendor deeds and personal Weaver keys cannot be sold or used as payment. Everyone needs the content mods for the items being traded. Removing an item's mod leaves its vendor stock saved until the item is available again.
+
+### Manage or move your vendor
+
+Open **F8 → My Vendors** to manage your shops. **Earnings** holds payments from completed sales; collect one entry or all of them when you have room. **Listed stock** lets you withdraw an unsold lot.
+
+**Appearance** changes the vendor's name, title, body, hair, beard and colours. It cannot add equipment, loot, rewards or scripts. Players can only list items they deposit and collect items already held by their own vendor.
+
+**Pack vendor** removes it from the world and keeps its stock and earnings in My Vendors. Use **Place again** to move it without another deed. Only the owner or a server admin can change its appearance or pack it; stock and earnings can only be collected by the owner. Packed vendors still count towards the owner's limit.
+
+### Vendor limits and backups
+
+The host's `BepInEx/config/com.variantmods.weaver.cfg` has a **Player vendors** section. Defaults are enabled, **3 vendors per player**, **100 per world**, **32 listings per vendor**, and a **100,000-item maximum price**. These limits are enforced by the server. Disabling vendors stops new placements and sales while letting owners recover their items.
+
+Vendors, listings, earnings and pending trades are saved in `BepInEx/config/VariantWeaver/vendors-world-<world ID>.json`. Back up that folder with your world. Keep client `BepInEx/config/WeaverEditor/vendor-receipts` files with character backups; they help recover interrupted trades. Install the same build on the server/host and every client.
+
 ## Themes, player journal and movable quest tracker
 
 ### Choosing a theme
@@ -38,7 +70,7 @@ Appearance settings are local to each installation, not shared server rules. You
 
 ### Travel, kits and quests
 
-The player menu has **Travel**, **Kits**, **Quests** and **Appearance** pages. Travel cards show readiness, cooldown and optional distance/coordinates. The **Return to departure** button uses the same WeaverEditor-only return as **/return**.
+The player menu has **Travel**, **Kits**, **Quests**, **Appearance** and **My Vendors** pages. Travel cards show readiness, cooldown and optional distance/coordinates. The **Return to departure** button uses the same WeaverEditor-only return as **/return**.
 
 Kit cards show availability and item previews. Expand a card to see quantities and the complete contents. Search kits and travel points by name. Claiming kits and using travel still use the existing server permissions, restrictions and cooldowns.
 
@@ -68,7 +100,7 @@ The position is saved as a proportion of available screen space. Resolution, sca
 
 Preferences are stored in the local `BepInEx/config/com.variantmods.weaver.cfg`, in **Menu appearance** and **Quest tracker**. Use the in-game controls rather than editing the file while the game is open. Reset position does not delete quests or server data.
 
-### Version 1.2.2 upgrade
+### Updating from Variant Weaver
 
 WeaverEditor is the new name for Variant Weaver. Update the existing mod to keep your saved content. The DLL names, package identifier and config folders keep their old names so existing installs update correctly. Replace both DLLs together.
 
@@ -92,7 +124,7 @@ Weight is checked against the current carry limit. The item setting checks the n
 
 The travelling player's inventory is checked again immediately before travel, including after another player accepts a pending request. Blocked travel explains why and keeps the previous return point. A rejected warp refunds its warp cooldown; the short anti-spam/retry timers still apply. Store restricted items or reduce weight, then try again. Normal portals and other mods' teleport commands are unchanged.
 
-Install **1.2.2 on the server/host and every client**. Older client builds do not implement these checks. Custom storage supplied by another mod must expose its contents through the player's inventory to be inspected.
+Install **1.2.3 on the server/host and every client**. Older client builds do not implement these checks. Custom storage supplied by another mod must expose its contents through the player's inventory to be inspected.
 
 The admin **Settings → Server rules** panel shows whether each restriction is enabled. Change the settings in the host's config, not in personal Appearance options.
 
@@ -137,11 +169,11 @@ On approval, the server checks the original player sessions, the sender's curren
 
 Only a successful approved trip creates or replaces the travelling player's WeaverEditor return point. Denied and expired requests do not alter `/return`. This consent prompt applies to `/tp`, **Teleport to player** and **Bring player here**. Normal portals, named WeaverEditor warp destinations and quest-graph travel do not show this consent prompt. Enabled travel restrictions still apply to all WeaverEditor teleports.
 
-Install **1.2.2** on the **server/host and every client**. Earlier builds without teleport approval do not implement this handshake: an old server can still have immediate-teleport behavior, while an old recipient client cannot display the request and it will expire.
+Install **1.2.3** on the **server/host and every client**. Earlier builds without teleport approval do not implement this handshake: an old server can still have immediate-teleport behavior, while an old recipient client cannot display the request and it will expire.
 
 ### Updating
 
-Install 1.2.2 on the server or host and every client. Keep **VariantWeaver.dll** and **VariantWeaver.Core.dll** together; remove old duplicate copies rather than leaving two versions installed. Back up and keep `BepInEx/config/VariantWeaver` and your existing WeaverEditor config. This package does not replace saved quests, NPCs or world configuration.
+Install 1.2.3 on the server or host and every client. Keep **VariantWeaver.dll** and **VariantWeaver.Core.dll** together; remove old duplicate copies rather than leaving two versions installed. Back up and keep `BepInEx/config/VariantWeaver` and your existing WeaverEditor config. This package does not replace saved quests, NPCs or world configuration.
 
 ## Menu and editor
 
