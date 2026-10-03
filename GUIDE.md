@@ -46,7 +46,7 @@ Payments use the buyer's carried inventory. Equipped, protected and quest items 
 
 Open **F8 → My Vendors** to manage your shops. **Earnings** holds payments from completed sales; collect one entry or all of them when you have room. **Listed stock** lets you withdraw an unsold lot.
 
-**Appearance** changes the vendor's name, title, body, hair, beard and colours. It cannot add equipment, loot, rewards or scripts. Players can only list items they deposit and collect items already held by their own vendor.
+**Appearance** changes the vendor's name, title, body, hair, beard, colours, outfit and pose. Choose clothing and held items under **Outfit & pose**. These are visual choices; they do not create inventory items or shop stock. Players can only list items they deposit and collect items already held by their own vendor.
 
 **Pack vendor** removes it from the world and keeps its stock and earnings in My Vendors. Use **Place again** to move it without another deed. Only the owner or a server admin can change its appearance or pack it; stock and earnings can only be collected by the owner. Packed vendors still count towards the owner's limit.
 
@@ -66,7 +66,20 @@ Choose Valheim lettering or readable lettering, adjust text size, and enable or 
 
 These settings affect WeaverEditor's player journal, all admin tabs, WeaverEditor, inventory and selection windows, dialogue, trader menus and quest tracker. Node-category and warning colours remain distinguishable. They do not recolour another mod's menus or the game's own pause/settings screens.
 
-Appearance settings are local to each installation, not shared server rules. Your choices do not change other players' interfaces.
+Theme and layout settings are local to each installation. Your choices do not change other players' interfaces.
+
+### Item warning text
+
+Enable **Hide summoned-item warning** under **Appearance** to hide Valheim's warning line in item tooltips. This only changes the text. Item flags, achievements and anti-cheat checks stay unchanged.
+
+To hide the line for everyone, set this in the server's `BepInEx/config/com.variantmods.weaver.cfg`, then restart the server:
+
+```ini
+[Server presentation]
+Hide summoned-item warning = true
+```
+
+Set it back to `false` to let players choose their own display setting. Everyone needs the updated WeaverEditor build.
 
 ### Travel, kits and quests
 
